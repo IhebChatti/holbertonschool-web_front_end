@@ -1,5 +1,6 @@
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
-* {
+*,
+*::before {
   box-sizing: border-box;
 }
 html {
@@ -159,7 +160,7 @@ body {
   font-family: var(--font-family-base);
   font-size: var(--font-size-medium);
   font-weight: var(--font-weight-regular);
-  min-height: var(--line-height-base);
+  line-height: var(--line-height-base);
 }
 
 h1,
