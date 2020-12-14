@@ -197,17 +197,17 @@ a:active {
   color: var(--color-primary);
 }
 
-.card-services .card-title {
+.card-title .card-services {
   margin: 0;
 }
 
-.card-services .a {
+.a .card-services {
   display: block;
   padding: 2rem;
   background-color: var(--color-light-grey);
 }
 
-.card-services .a:hover {
+.a:hover .card-services {
   color: var(--color-white);
   background-color: var(--color-primary);
   text-decoration: none;
