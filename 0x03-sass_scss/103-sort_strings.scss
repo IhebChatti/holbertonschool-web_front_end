@@ -1,0 +1,39 @@
+/*bubble sort */
+@import "103-sort_list.scss";
+
+$default-order: "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p"
+  "q" "r" "s" "t" "u" "v" "w" "x" "y" "z" !default;
+
+@function _str-compare($a, $b, $order) {
+  $a: to-lower-case($a);
+  $b: to-lower-case($b);
+
+  @for $i from 1 through min(str-length($a), str-length($b)) {
+    $char-a: str-slice($a, $i, $i);
+    $char-b: str-slice($b, $i, $i);
+
+    @if $char-a and $char-b and index($order, $char-a) != index($order, $char-b)
+    {
+      @return index($order, $char-a) < index($order, $char-b);
+    }
+  }
+
+  @return str-length($a) < str-length($b);
+}
+
+@function insertion-sort($list, $order: $default-order) {
+  @for $i from 1 through length($list) {
+    $current: nth($list, $i);
+    $j: $i - 1;
+
+    @while $j > 0 and not _str-compare(nth($list, $j), $current, $order) {
+      $list: set-nth($list, $j + 1, nth($list, $j));
+      $j: $j - 1;
+    }
+
+    $list: set-nth($list, $j + 1, $current);
+  }
+
+  @return $list;
+}
+@debug insertion-sort($list_to_sort);
