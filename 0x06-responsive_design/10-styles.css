@@ -635,6 +635,10 @@ ul.row {
   background-size: 90rem auto;
 }
 
+.article-page .header {
+  background-color: transparent;
+}
+
 .section-hero .section-body {
   padding: 10rem 4rem;
 }
