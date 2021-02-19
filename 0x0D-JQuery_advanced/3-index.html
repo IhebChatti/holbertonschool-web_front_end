@@ -12,18 +12,10 @@
   <body>
     <script type="application/javascript">
       function createFamilyTree() {
-        // $("body").append(
-        //   "<table><tr><th>FirstName</th><th>Lastname</th></tr><tr><td>Guillaume</td><td>Salva</td></tr><tr><td>Paulette</td><td>Salva</td></tr><tr><td>Antoine</td><td>Salva</td></tr></table>"
-        // );
-        $("body")
-          .last()
-          .append("<table></table>")
-          .append("<tr></tr>")
-          .append("<tr></tr>")
-          .append("<tr></tr>")
-          .append("<tr></tr>")
-          .find("tr")
-          .eq(0)
+        $("body").append("<table></table>");
+        $("table").append("<thead></thead>");
+        $("table").append("<tbody></tbody>");
+        $("thead")
           .append("<th></th>")
           .append("<th></th>")
           .find("th")
@@ -35,9 +27,13 @@
           .last()
           .text("Lastname")
           .end()
-          .end()
-          .end()
-          .eq(1)
+          .end();
+        $("tbody")
+          .append("<tr></tr>")
+          .append("<tr></tr>")
+          .append("<tr></tr>")
+          .find("tr")
+          .eq(0)
           .append("<td></td>")
           .append("<td></td>")
           .find("td")
@@ -51,7 +47,7 @@
           .end()
           .end()
           .end()
-          .eq(2)
+          .eq(1)
           .append("<td></td>")
           .append("<td></td>")
           .find("td")
@@ -65,7 +61,7 @@
           .end()
           .end()
           .end()
-          .eq(3)
+          .eq(2)
           .append("<td></td>")
           .append("<td></td>")
           .find("td")
@@ -76,7 +72,6 @@
           .find("td")
           .last()
           .text("Salva")
-          .end()
           .end()
           .end();
       }
