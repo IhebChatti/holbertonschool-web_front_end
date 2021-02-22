@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Task 11</title>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <script type="application/javascript">
+      function addPostRow(data) {
+        let $span = $(
+          `<p><span>Post created with id ${data.id}, title: ${data.title}, author: ${data.author}</span></p>`
+        );
+        $("body").append($span);
+      }
+
+      function buildForm() {
+        let $form = $(`<form action=""></form>`);
+        let $div = $(
+          `<div><label for="author">Author</label><input type="text" id="author"></div>`
+        );
+        let $div2 = $(
+          `<div><label for="title">Title</label><textarea id="title"></textarea></div>`
+        );
+        let $inputSubmit = $(`<input type="submit">`);
+        $form.submit((e) => {
+          e.preventDefault();
+          sendForm();
+        });
+        $form.append($div, $div2, $inputSubmit);
+
+        $("body").append($form);
+      }
+
+      function sendForm() {
+        $;
+        let url = "http://localhost:3000/posts";
+        $("form").after("About to send the query to the API");
+        let author = $("textarea").val();
+        let title = $("input").val();
+        let data = {
+          title: title,
+          author: author,
+        };
+
+        $.post(url, data, function (response, textStatus, xhr) {
+          if (xhr.status === 201) {
+            addPostRow(response);
+          } else {
+            alert("Error sending the POST query");
+          }
+        });
+      }
+
+      function listPosts() {
+        let url = "http://localhost:3000/posts";
+        $.get(url)
+          .done(function (data) {
+            for (let i = 0; i < data.length; i++) {
+              let element = data[i];
+              addPostRow(element);
+            }
+          })
+          .fail(function () {
+            alert("Server Error");
+          });
+      }
+      listPosts();
+      buildForm();
+    </script>
+  </body>
+</html>
